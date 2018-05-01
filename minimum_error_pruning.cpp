@@ -289,6 +289,7 @@ node* build_decision_tree(vector<vector<string> >& table,node* nodeptr,vector<ve
 			nodeptr->doprune=false;
 		}
 		else{
+			nodeptr->label=nodeptr->lclass;
 			nodeptr->doprune=true;
 		}
 	}
@@ -306,34 +307,6 @@ void printDecisionTree(node* nodePtr,int cnt){
 		for (iii = 0; iii < nodePtr->children.size(); iii++) {   
 			cout <<endl<<endl;
 			printDecisionTree(nodePtr->children[iii],cnt+1);
-		}
-		return;
-    }
-	else{
-		cout << " Parent : "<<cnt<<endl;
-		cout << " Value: " << nodePtr->label << endl;
-		cout << "Predicted class = " << nodePtr->lclass;
-		return;
-	}
-}
-void printDecisionTree1(node* nodePtr,int cnt){
-	if(nodePtr == NULL){
-		return;
-	}
-	if(!nodePtr->children.empty()){
-		cout << " Parent : "<<cnt<<endl;
-		cout << " Value: " << nodePtr->label << endl;
-		cout << "Split on: " << nodePtr->spliton<<endl;
-		
-		//cout<<nodePtr->Ek<<" "<<nodePtr->doprune<<endl;
-		if(nodePtr->doprune){
-			cout << "Predicted class = " << nodePtr->lclass;
-			return;
-		} 
-		int iii;
-		for (iii = 0; iii < nodePtr->children.size(); iii++) {   
-			cout <<endl<<endl;
-			printDecisionTree1(nodePtr->children[iii],cnt+1);
 		}
 		return;
     }
