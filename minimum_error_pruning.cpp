@@ -333,34 +333,6 @@ void printDecisionTree(node* nodePtr,int cnt){
 		return;
 	}
 }
-void printDecisionTree1(node* nodePtr,int cnt){
-	if(nodePtr == NULL){
-		return;
-	}
-	if(!nodePtr->children.empty()){
-		cout << " Parent : "<<cnt<<endl;
-		cout << " Value: " << nodePtr->label << endl;
-		cout << "Split on: " << nodePtr->spliton<<endl;
-		
-		//cout<<nodePtr->Ek<<" "<<nodePtr->doprune<<endl;
-		if(nodePtr->doprune){
-			cout << "Predicted class = " << nodePtr->lclass;
-			return;
-		} 
-		int iii;
-		for (iii = 0; iii < nodePtr->children.size(); iii++) {   
-			cout <<endl<<endl;
-			printDecisionTree1(nodePtr->children[iii],cnt+1);
-		}
-		return;
-    }
-	else{
-		cout << " Parent : "<<cnt<<endl;
-		cout << " Value: " << nodePtr->label << endl;
-		cout << "Predicted class = " << nodePtr->lclass;
-		return;
-	}
-}
 string returnMostFrequentClass(vector<vector<string> > &dataTable){
 	map<string,int> trainingClasses;           				
 	for (int iii = 1; iii < dataTable.size(); iii++) {
